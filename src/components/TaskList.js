@@ -1,21 +1,36 @@
-import React, { useContext } from "react";
+import React, { useContext,useState,useEffect} from "react";
 import { TaskListContext } from "../context/TaskListContext";
 import Task from "./Task";
+import Search from './search/Search'
+
 
 const TaskList = () => {
   const { tasks } = useContext(TaskListContext);
+  const [search, setSearch] = useState('')
+  const [filteredSearch, setFilteredSearch] = useState([])
+
+  const handleChange = e => {
+    setSearch(e.target.value)
+  }
+
+  useEffect(() => {
+    setFilteredSearch(
+      tasks.filter((task) =>
+        task.title.toLowerCase().includes(search.toLowerCase())
+      )
+    )
+  }, [search, tasks]);
 
   return (
     <div>
-      {tasks.length ? (
+      <Search handleChange={handleChange} />
         <ul className="list">
-          {tasks.map(task => {
-            return <Task task={task} key={task.id} />;
-          })}
+          {
+            filteredSearch.map(task => (
+              <Task key={task.id} task={task} />
+            ))
+          }
         </ul>
-      ) : (
-        <div className="no-tasks">No Tasks</div>
-      )}
     </div>
   );
 };

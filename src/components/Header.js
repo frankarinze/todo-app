@@ -1,10 +1,10 @@
 import React from 'react'
+import Search from './search/Search'
 
 const Header = () => {
   return (
     <div className='header'>
       <h3>Todo App</h3>
-      <input type='serach' placeholder='find todo' onChange={e => console.log(e.target.value)}></input>
     </div>
   )
 }
