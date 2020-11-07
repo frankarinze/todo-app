@@ -1,10 +1,10 @@
 import React from "react";
-import TaskListContextProvider from "../context/TaskListContext";
-import TaskList from "./TaskList";
-import TaskForm from "./TaskForm";
+import TaskListContextProvider from "./context/TaskListContext";
 
-import "../App.css";
-import Header from "./Header";
+import Home from "./Home/Home"
+
+import "./App.css";
+import Header from "./components/Header";
 
 const App = () => {
   return (
@@ -13,8 +13,7 @@ const App = () => {
         <div className="app-wrapper">
           <Header />
           <div className="main">
-            <TaskForm />
-            <TaskList />
+            <Home />
           </div>
         </div>
       </div>

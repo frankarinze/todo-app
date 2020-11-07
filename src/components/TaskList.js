@@ -23,7 +23,8 @@ const TaskList = () => {
 
   return (
     <div>
-      <Search handleChange={handleChange} />
+      {/* <Search handleChange={handleChange} /> */}
+      {tasks.length > 0 ? (
         <ul className="list">
           {
             filteredSearch.map(task => (
@@ -31,8 +32,20 @@ const TaskList = () => {
             ))
           }
         </ul>
+
+      ) : (
+        <div className="no-tasks">
+          <p>Add new todo</p>
+          <button type="submit" className="btn add-new-btn">
+          <i className="bx bx-plus font-size-16 "></i>
+            Add New
+        </button>
+        </div>
+      )
+      }
     </div>
+
   );
-};
+}
 
 export default TaskList;

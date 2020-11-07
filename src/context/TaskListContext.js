@@ -6,7 +6,7 @@ export const TaskListContext = createContext()
 const TaskListContextProvider = props => {
   const initialState = JSON.parse(localStorage.getItem('tasks')) || []
 
-  const [tasks, setTasks] = useState(initialState)
+  const [tasks, setTasks] = useState(initialState);
 
 
   useEffect(() => {
@@ -15,9 +15,9 @@ const TaskListContextProvider = props => {
 
   const [editItem, setEditItem] = useState(null)
 
-  // Add tasks
-  const addTask = title => {
-    setTasks([...tasks, { title, id: uuid() }])
+  // Add todo
+  const addTask = (title ,description) => {
+    setTasks([...tasks, { title,description, id: uuid() }])
   }
 
   // Remove tasks
@@ -33,16 +33,13 @@ const TaskListContextProvider = props => {
   // Find task
   const findItem = id => {
     const item = tasks.find(task => task.id === id)
-
     setEditItem(item)
   }
 
   // Edit task
-  const editTask = (title, id) => {
-    const newTasks = tasks.map(task => (task.id === id ? { title, id } : task))
-
+  const editTask = (title,description, id) => {
+    const newTasks = tasks.map(task => (task.id === id ? { title, description,id } : task))
     console.log(newTasks)
-
     setTasks(newTasks)
     setEditItem(null)
   }

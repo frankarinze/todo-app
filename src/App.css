@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500&display=swap');
 
+/* main css */
 * {
   margin: 0;
   padding: 0;
@@ -16,7 +17,12 @@
   align-items: center;
 }
 
-
+.font-size-16{
+  font-size: 16px !important;
+}
+.align-middle{
+  vertical-align: 0.5rem !important;
+}
 
 .app-wrapper {
   background-color: #ffffff;
@@ -115,6 +121,13 @@
 
 .btn {
   margin: 10px;
+  font-weight: 400;
+  vertical-align: middle;
+  font-size: 0.8125rem;
+  padding: 0.47rem 0.75rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .add-task-btn {
@@ -123,9 +136,20 @@
   color: #ccc;
   border: none;
   font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  border-radius: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  outline: none;
+  cursor: pointer;
+}
+
+.add-new-btn {
+  min-width: 100px;
+  background-color: #fc5570;
+  color: #fff;
+  border: none;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  border-radius: 8px;
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); */
   outline: none;
   cursor: pointer;
 }
@@ -149,15 +173,15 @@
 }
 
 .btn-delete i {
-  font-size: 20px;
+  font-size: 18px;
   color: #bbb;
-  margin-right: 10px;
+  margin-right: 8px;
 }
 
 .btn-edit i {
-  font-size: 20px;
+  font-size: 18px;
   color: #bbb;
-  margin-right: 10px;
+  margin-right: 8px;
 }
 
 .clear-btn {

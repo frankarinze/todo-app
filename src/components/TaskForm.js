@@ -4,19 +4,26 @@ import { TaskListContext } from '../context/TaskListContext'
 const TaskForm = () => {
   const { addTask, clearList, editTask, editItem } = useContext(TaskListContext)
   const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+
 
   const handleSubmit = e => {
     e.preventDefault()
     if (!editItem) {
-      addTask(title)
-      setTitle('')
+      addTask(title,description) 
+      setTitle('') 
+      setDescription('')
     } else {
-      editTask(title, editItem.id)
+      editTask(title,description, editItem.id)
     }
   }
 
-  const handleChange = e => {
+  const titleChange = e => {
     setTitle(e.target.value)
+    // console.log(e.target.value)
+  }
+  const descriptionChange = e => {
+    setDescription(e.target.value)
   }
 
   useEffect(() => {
@@ -30,14 +37,24 @@ const TaskForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="form">
+      <h4>Add New Todo</h4>
       <input
         type="text"
-        placeholder="Add Task..."
+        placeholder="Enter todo title"
         value={title}
-        onChange={handleChange}
+        onChange={titleChange}
         required
         className="form-control"
       />
+      <input
+        type="text"
+        placeholder="Add description here"
+        value={description}
+        onChange={descriptionChange}
+        required
+        className="form-control"
+      />
+
       <div className="buttons">
         <button type="submit" className="btn add-task-btn">
           {editItem ? 'Edit Task' : 'Add Task'}
