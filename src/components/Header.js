@@ -1,10 +1,12 @@
 import React from 'react'
 import Search from './search/Search'
+import { Link, useHistory } from "react-router-dom";
+
 
 const Header = () => {
   return (
     <div className='header'>
-      <h3>Todo App</h3>
+       <Link className="btn btn-primary" to="/add">Add Todo</Link>
     </div>
   )
 }

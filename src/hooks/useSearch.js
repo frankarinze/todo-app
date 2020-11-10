@@ -1,8 +1,7 @@
 import  {useState, useEffect, useContext} from 'react'
-import {TaskListContext} from '../context/TaskListContext'
 
 export const useSearch = ()=>{
-    const { tasks } = useContext(TaskListContext);
+    // const { tasks } = useContext(TaskListContext);
     const [search, setSearch] = useState('')
     const [filteredSearch, setFilteredSearch] = useState([])
   
@@ -10,13 +9,13 @@ export const useSearch = ()=>{
     //   setSearch(e.target.value)
     // }
   
-    useEffect(() => {
-      setFilteredSearch(
-        tasks.filter((task) =>
-          task.title.toLowerCase().includes(search.toLowerCase())
-        )
-      )
-    }, [search, tasks]);
+    // useEffect(() => {
+    //   setFilteredSearch(
+    //     tasks.filter((task) =>
+    //       task.title.toLowerCase().includes(search.toLowerCase())
+    //     )
+    //   )
+    // }, [search, tasks]);
 
     return {
      tasks ,
