@@ -4,35 +4,36 @@ import TaskForm from "../components/TaskForm";
 import { TaskListContext } from "../context/TaskListContext";
 import Task from "../components/Task";
 import Search from '../components/search/Search'
+import {useSearch} from '../hooks/useSearch'
 
 
 const TodoList = () => {
-    const { tasks } = useContext(TaskListContext);
-    const [search, setSearch] = useState('')
-    const [filteredSearch, setFilteredSearch] = useState([])
+    const { tasks , search , setSearch , filteredSearch} = useSearch();
 
     const handleChange = e => {
         setSearch(e.target.value)
     }
 
-    useEffect(() => {
-        setFilteredSearch(
-            tasks.filter((task) =>
-                task.title.toLowerCase().includes(search.toLowerCase())
-            )
-        )
-    }, [search, tasks]);
+    // useEffect(() => {
+    //     setFilteredSearch(
+    //         tasks.filter((task) =>
+    //             task.title.toLowerCase().includes(search.toLowerCase())
+    //         )
+    //     )
+    // }, [search, tasks]);
     return (
         <div>
             <Search handleChange={handleChange} />
-
+        {tasks.length > 0 && (
             <ul className="list">
-                {
-                    filteredSearch.map(task => (
-                        <Task key={task.id} task={task} />
-                    ))
-                }
-            </ul>
+            {
+                filteredSearch.map(task => (
+                    <Task key={task.id} task={task} />
+                ))
+            }
+        </ul>
+)}
+            
 
         </div>
 

@@ -5,6 +5,8 @@ const TaskForm = () => {
   const { addTask, clearList, editTask, editItem } = useContext(TaskListContext)
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
+  const [taskForm, setTaskForm] = useState(true)
+
 
 
   const handleSubmit = e => {
@@ -13,8 +15,9 @@ const TaskForm = () => {
       addTask(title,description) 
       setTitle('') 
       setDescription('')
+      setTaskForm(false)
     } else {
-      editTask(title,description, editItem.id)
+      editTask(title,description, editItem.id);
     }
   }
 
@@ -28,15 +31,20 @@ const TaskForm = () => {
 
   useEffect(() => {
     if (editItem) {
+      setTaskForm(true);
       setTitle(editItem.title)
+      setDescription(editItem.description)
       console.log(editItem)
     } else {
       setTitle('')
+      setDescription('')
     }
   }, [editItem])
 
   return (
-    <form onSubmit={handleSubmit} className="form">
+    <>
+    {taskForm ? (
+  <form onSubmit={handleSubmit} className="form">
       <h4>Add New Todo</h4>
       <input
         type="text"
@@ -64,6 +72,10 @@ const TaskForm = () => {
         </button>
       </div>
     </form>
+    
+    ) : ('')}
+  
+    </>
   )
 }
 
