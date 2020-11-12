@@ -5,26 +5,26 @@ import { Link, useHistory } from "react-router-dom";
 
 const EditTodo = (props) => {
     const { editTodo, todos } = useContext(GlobalContext);
-    const [selectedUser, setSelectedUser] = useState({
+    const [selectedTodo, setSelectedTodo] = useState({
         id: '',
         name: ''
     })
     const history = useHistory();
-    const currentUserId = props.match.params.id;
+    const currentTodoId = props.match.params.id;
 
     useEffect(() => {
-        const userId = currentUserId;
-        const selectedUser = todos.find(user => user.id === userId);
-        setSelectedUser(selectedUser);
-    }, [currentUserId, todos])
+        const userId = currentTodoId;
+        const selectedTodo = todos.find(user => user.id === userId);
+        setSelectedTodo(selectedTodo);
+    }, [currentTodoId, todos])
 
     const onChange = (e) => {
-        setSelectedUser({ ...selectedUser, [e.target.name]: e.target.value })
+        setSelectedTodo({ ...selectedTodo, [e.target.name]: e.target.value })
     }
 
     const onSubmit = (e) => {
         e.preventDefault();
-        editTodo(selectedUser);
+        editTodo(selectedTodo);
         history.push("/")
     }
 
@@ -35,7 +35,7 @@ const EditTodo = (props) => {
                 <input
                     type="text"
                     placeholder="Enter todo title"
-                    value={selectedUser.name}
+                    value={selectedTodo.name}
                     onChange={onChange}
                     required
                     name="name"

@@ -3,12 +3,7 @@ import AppReducer from './AppReducer';
 
 // Initial State
 const initialState = {
-    todos: [
-        //   {id :'1', name : 'user one'},
-        //   {id :'2', name : 'user two'}
-
-
-    ]
+    todos: [ ]
 }
 
 // Create Context

@@ -11,11 +11,11 @@ const AddTodo = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        const newUser = {
+        const newTodo = {
             id: uuid(),
             name
         }
-        addTodo(newUser);
+        addTodo(newTodo);
         history.push("/");
     }
 
