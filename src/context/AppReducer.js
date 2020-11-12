@@ -9,18 +9,18 @@ export default (state, action) => {
         case 'DELETE_TODO':
         return {
           ...state,
-          todos: state.todos.filter(user => {
-            return user.id !== action.payload;
+          todos: state.todos.filter(todo => {
+            return todo.id !== action.payload;
           })
         }
       case 'UPDATE_TODO':
-        const updateUser = action.payload;
+        const updateTodo = action.payload;
   
-        const updatetodos = state.todos.map(user => {
-          if (user.id === updateUser.id) {
-            return updateUser;
+        const updatetodos = state.todos.map(todo => {
+          if (todo.id === updateTodo.id) {
+            return updateTodo;
           }
-          return user;
+          return todo;
         })
         return {
           ...state,

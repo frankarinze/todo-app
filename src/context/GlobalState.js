@@ -14,10 +14,10 @@ export const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(AppReducer, initialState);
 
     // TODO Actions
-    const addTodo = (user) => {
+    const addTodo = (todo,content) => {
         dispatch({
             type: 'CREATE_TODO',
-            payload: user
+            payload: todo,content
         })
     }
 
@@ -28,10 +28,10 @@ export const GlobalProvider = ({ children }) => {
         })
     }
 
-    const editTodo = (user) => {
+    const editTodo = (todo,content) => {
         dispatch({
             type: 'UPDATE_TODO',
-            payload: user
+            payload: todo,content
         })
     }
 

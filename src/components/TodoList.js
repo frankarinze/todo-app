@@ -9,13 +9,14 @@ const TodoList = () => {
         <div>
             {todos.length > 0 ? (
                 <>
-                    {todos.map(user => (
-                        <ul className="d-flex" key={user.id}>
+                    {todos.map(todo => (
+                        <ul className="d-flex" key={todo.id}>
                             <li className="list-item">
-                                <span>{user.name} </span>
+                                <span>{todo.name} </span>
+                                <span>{todo.content} </span>
                                 <div className="ml-auto">
-                                    <Link to={`/edit/${user.id}`} color="warning" className="btn btn-warning mr-1">Edit</Link>
-                                    <button type="button" className="btn-edit task-btn" onClick={() => deleteTodo(user.id)} >Delete</button>
+                                    <Link to={`/edit/${todo.id}`} color="warning" className="btn btn-warning mr-1">Edit</Link>
+                                    <button type="button" className="btn-edit task-btn" onClick={() => deleteTodo(todo.id)} >Delete</button>
                                 </div>
                             </li>
                         </ul>

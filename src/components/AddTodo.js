@@ -4,8 +4,8 @@ import { v4 as uuid } from "uuid";
 import { Link, useHistory } from "react-router-dom";
 
 const AddTodo = () => {
-
     const [name, setName] = useState('');
+    const [content, setContent] = useState('');
     const { addTodo } = useContext(GlobalContext);
     const history = useHistory();
 
@@ -13,14 +13,17 @@ const AddTodo = () => {
         e.preventDefault();
         const newTodo = {
             id: uuid(),
-            name
+            name,
+            content
         }
         addTodo(newTodo);
         history.push("/");
     }
-
     const onChange = (e) => {
         setName(e.target.value);
+    }
+    const contentChange = (e) => {
+        setContent(e.target.value);
     }
     return (
         <>
@@ -34,14 +37,14 @@ const AddTodo = () => {
                         required
                         className="form-control"
                     />
-                    {/* <input
+                    <input
                         type="text"
                         placeholder="Add description here"
-                        value={description}
-                        onChange={descriptionChange}
+                        value={content}
+                        onChange={contentChange}
                         required
                         className="form-control"
-                    /> */}
+                    />
 
                     <div className="buttons">
                         <button type="submit" className="btn add-task-btn">

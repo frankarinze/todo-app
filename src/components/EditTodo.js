@@ -7,19 +7,24 @@ const EditTodo = (props) => {
     const { editTodo, todos } = useContext(GlobalContext);
     const [selectedTodo, setSelectedTodo] = useState({
         id: '',
-        name: ''
+        name: '',
+        content : ''
     })
     const history = useHistory();
     const currentTodoId = props.match.params.id;
 
     useEffect(() => {
-        const userId = currentTodoId;
-        const selectedTodo = todos.find(user => user.id === userId);
+        const todoId = currentTodoId;
+        const selectedTodo = todos.find(todo => todo.id === todoId);
         setSelectedTodo(selectedTodo);
     }, [currentTodoId, todos])
 
-    const onChange = (e) => {
-        setSelectedTodo({ ...selectedTodo, [e.target.name]: e.target.value })
+    const inputChange = (e) => {
+        setSelectedTodo({
+             ...selectedTodo, 
+             [e.target.name]: e.target.value ,
+             [e.target.content]: e.target.value 
+            })
     }
 
     const onSubmit = (e) => {
@@ -36,19 +41,20 @@ const EditTodo = (props) => {
                     type="text"
                     placeholder="Enter todo title"
                     value={selectedTodo.name}
-                    onChange={onChange}
+                    onChange={inputChange}
                     required
                     name="name"
                     className="form-control"
                 />
-                {/* <input
+                <input
                 type="text"
                 placeholder="Add description here"
-                value={description}
-                onChange={descriptionChange}
+                value={selectedTodo.content}
+                onChange={inputChange}
                 required
+                name = "content"
                 className="form-control"
-            /> */}
+            />
 
                 <div className="buttons">
                     <button type="submit" className="btn add-task-btn">
